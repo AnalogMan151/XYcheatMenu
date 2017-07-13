@@ -12,10 +12,10 @@ typedef enum
 }               entry_flags;
 
 enum {
-    NULLCHEAT,
+    WALKTHRUWALLS,
 } e_identifiers;
 
-
+extern int game;
 
 // Helpers
 void    disable_entry(int identifier);
@@ -39,7 +39,7 @@ int     randomNum(int start, int end);
 bool    getWifiStatus(void);
 
 
-
+void    walkThruWalls(void);
 
 void    overlayInit(void);
 #endif
