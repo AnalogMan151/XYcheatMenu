@@ -1,6 +1,14 @@
 #include "cheats.h"
 #include "hid.h"
 
+void movementMenu(void)
+{
+    new_spoiler("Movement Codes");
+        new_entry_managed_note("Walk Through Walls", "Hold R = Enable\nPress R+A to toggle", walkThruWalls, WALKTHRUWALLS, 0);
+        new_entry_managed_note("Walk Faster", "Only works with walking (D-Pad)\n\nOpen menu after disabling", walkFaster, WALKFASTER, 0);
+    exit_spoiler();
+}
+
 void   walkThruWalls(void)
 {
     static bool permActivation = false;
@@ -39,4 +47,14 @@ void   walkThruWalls(void)
         WRITEU32(offset2[game][0], data[game][0]);
     if (checkAddress(offset2[game][1]) && READU32(offset2[game][1]) == 0xE1A06000)
         WRITEU32(offset2[game][1], data[game][1]);
+}
+
+void walkFaster(void)
+{
+    if (checkAddress(0x08092F38) && READU32(0x08092F38) == 0x03A05007) {
+        WRITEU32(0x08092DE4, 0x13A05003);
+        WRITEU32(0x08092DE8, 0x03A05002);
+        WRITEU32(0x08092F34, 0x13A05005);
+        WRITEU32(0x08092F38, 0x03A05003);
+    }
 }

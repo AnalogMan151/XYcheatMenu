@@ -12,7 +12,23 @@ typedef enum
 }               entry_flags;
 
 enum {
+    MAXLEVEL1,
+    MAXLEVEL2,
+    MAXLEVEL3,
+    MAXLEVEL4,
+    MAXLEVEL5,
+    MAXLEVEL6,
+    INFINITEHP,
+    INFINITEPP,
+    CATCHTRAINERSPOKEMON,
+    CATCH100,
+    SHINYPOKEMON,
     WALKTHRUWALLS,
+    WALKFASTER,
+    ACCESSPC,
+    INSTANTTEXT,
+    QUICKDAYCARE,
+    INSTANTHATCH,
 } e_identifiers;
 
 extern int game;
@@ -38,8 +54,34 @@ bool    checkAddress(u32 address);
 int     randomNum(int start, int end);
 bool    getWifiStatus(void);
 
+// Cheats
 
+// Battle Cheats
+void    battleMenu(void);
+void    maxLevel1(void);
+void    maxLevel2(void);
+void    maxLevel3(void);
+void    maxLevel4(void);
+void    maxLevel5(void);
+void    maxLevel6(void);
+void    infiniteHP(void);
+void    infinitePP(void);
+void    catchTrainersPokemon(void);
+void    catch100(void);
+void    shinyPokemon(void);
+
+// Movement Cheats
+void    movementMenu(void);
 void    walkThruWalls(void);
+void    walkFaster(void);
+
+// Misc Cheats
+void    miscMenu(void);
+void    accessPC(u32 state);
+void    instantText(void);
+void    quickDayCare(void);
+void    instantHatch(void);
+
 
 void    overlayInit(void);
 #endif

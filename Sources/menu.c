@@ -5,7 +5,7 @@
 
 char	*builder_name = "AnalogMan",
         version[7] = "v1.0.0",
-        formattedVer[22];
+        formattedVer[27];
 
 int     game = -1;
 
@@ -28,13 +28,17 @@ int    set_game(void) {
 
 void	my_menus(void) {
 
-    if (set_game()) return;
+    if (set_game()) {
+        new_unselectable_entry("Unsupported game");
+        return;
+    }
     overlayInit();
-    xsprintf(formattedVer, "%14s", version);
+    xsprintf(formattedVer, "%19s", version);
     new_unselectable_entry("Entries w/ an orange background");
     new_unselectable_entry("have notes. Press (Y) to view.");
     new_super_unselectable_entry(formattedVer, always_run);
 	new_separator();
-    new_entry_managed_note("Walk Through Walls", "Hold R = Enable\nPress R+A to toggle", walkThruWalls, WALKTHRUWALLS, 0);
-
+    battleMenu();
+    movementMenu();
+    miscMenu();
 }
